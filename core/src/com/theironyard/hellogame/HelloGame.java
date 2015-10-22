@@ -61,4 +61,30 @@ public class HelloGame extends ApplicationAdapter {
 		batch.draw(img, x, y);
 		batch.end();
 	}
+    void move() {
+        if (Gdx.input.isKeyPressed(Input.Keys.UP) || Gdx.input.isKeyPressed(Input.Keys.W)){ //WASD controls
+            yv = MAX_VELOCITY;
+
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.DOWN) || Gdx.input.isKeyPressed(Input.Keys.S)){
+            yv = MAX_VELOCITY * -1;
+
+        }
+        if (Gdx.input.isKeyPressed((Input.Keys.RIGHT)) || Gdx.input.isKeyPressed(Input.Keys.D)){
+            xv = MAX_VELOCITY;
+
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.isKeyPressed(Input.Keys.A)){
+            xv = MAX_VELOCITY * -1;
+
+        }
+
+        x += xv * Gdx.graphics.getDeltaTime();  //getting delta time (time since last frame)
+        y += yv * Gdx.graphics.getDeltaTime();
+
+        xv *= 0.9;
+        yv *= 0.9;
+
+    }
 }
+
